@@ -16,6 +16,21 @@
         <th>Read</th>
       </tr>
     </table>
+    <button>new book</button>
+    <dialog>
+      <form method="dialog">
+        <input type="text" name="title" placeholder="Title" />
+        <input type="text" name="author" placeholder="Author" />
+        <input type="number" name="pages" placeholder="Pages" />
+        <select name="read">
+          <option value="read">read</option>
+          <option value="not read yet">not read yet</option>
+        </select>
+        <button id="submit">submit</button>
+        <button formmethod="dialog">close</button>
+      </form>
+      <p>modaldialog</p>
+    </dialog>
     <script src="script.js"></script>
   </body>
 </html>

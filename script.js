@@ -1,6 +1,5 @@
 const library = [];
 
-const booksTable = document.querySelector("table");
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -11,10 +10,41 @@ function Book(title, author, pages, read) {
   };
 }
 
+const booksTable = document.querySelector("table");
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   library.push(book);
+  booksTable.innerHTML += `
+  <tr>
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.pages}</td>
+    <td>${book.read}</td>
+  </tr>
+  `;
 }
+
+const newBookButton = document.querySelector("button");
+const modal = document.querySelector("dialog");
+const submitButton = document.querySelector("#submit");
+newBookButton.addEventListener("click", () => {
+  modal.showModal();
+});
+
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const title = document.querySelector("[name=title]").value;
+  const author = document.querySelector("[name=author]").value;
+  const pages = document.querySelector("[name=pages]").value;
+  const read = document.querySelector("[name=read]").value;
+  console.log("return value", modal.returnValue);
+  console.log(title, author, pages, read);
+  addBookToLibrary(title, author, pages, read);
+  document.querySelector("[name=title]").value = "";
+  document.querySelector("[name=author]").value = "";
+  document.querySelector("[name=pages]").value = 0;
+  document.querySelector("[name=read]").value = "read";
+});
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "read");
 addBookToLibrary(
@@ -29,13 +59,3 @@ addBookToLibrary(
   277,
   "not read yet"
 );
-for (book in library) {
-  booksTable.innerHTML += `
-  <tr>
-    <td>${library[book].title}</td>
-    <td>${library[book].author}</td>
-    <td>${library[book].pages}</td>
-    <td>${library[book].read}</td>
-  </tr>
-  `;
-}
