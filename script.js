@@ -6,24 +6,32 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}.`;
   };
 }
 
 const booksTable = document.querySelector("table");
+function removeBookFromLibrary(title) {
+  const book = document.getElementById(title);
+  book.remove();
+  console.log(booksTable.innerHTML);
+}
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
+  console.log(book.info());
   library.push(book);
   booksTable.innerHTML += `
-  <tr>
+  <tr id="book${library.indexOf(book)}">
     <td>${book.title}</td>
     <td>${book.author}</td>
     <td>${book.pages}</td>
     <td>${book.read}</td>
+    <td><button onclick="removeBookFromLibrary('book${library.indexOf(
+      book
+    )}')">remove</button></td>
   </tr>
   `;
 }
-
 const newBookButton = document.querySelector("button");
 const modal = document.querySelector("dialog");
 const submitButton = document.querySelector("#submit");

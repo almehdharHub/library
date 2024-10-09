@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: red solid 1px;
-}
+} */
 
 body {
   margin: 0;
@@ -16,13 +16,14 @@ table {
 th,
 td {
   border: black solid 1px;
+  padding: 5px;
 }
 
 button {
   cursor: pointer;
   margin: 10px;
   padding: 10px;
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
   font-size: 16px;
 }
