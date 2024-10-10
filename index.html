@@ -9,26 +9,28 @@
   <body>
     <h1>Library</h1>
     <table>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Pages</th>
-        <th>Read</th>
-        <th>Remove</th>
-      </tr>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read</th>
+          <th>Remove</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody id="books"></tbody>
     </table>
-    <button>new book</button>
+    <button id="newBookButton">new book</button>
     <dialog>
       <form method="dialog">
-        <input type="text" name="title" placeholder="Title" />
-        <input type="text" name="author" placeholder="Author" />
-        <input type="number" name="pages" placeholder="Pages" />
-        <select name="read">
-          <option value="read">read</option>
-          <option value="not read yet">not read yet</option>
-        </select>
-        <button id="submit">submit</button>
-        <button formmethod="dialog">close</button>
+        <h1>New Book</h1>
+        <label>Title: <input type="text" id="title" required /></label><br />
+        <label>Author: <input type="text" id="author" required /></label><br />
+        <label>Pages: <input type="number" id="pages" required /></label><br />
+        <label>Read: <input type="checkbox" id="read" /></label><br />
+        <button type="submit" formmethod="dialog">Add Book</button>
+        <button id="closeButton">Close</button>
       </form>
     </dialog>
     <script src="script.js"></script>
